@@ -1,0 +1,162 @@
+<html>
+    <head>
+       <style>
+           .row-height {
+  display: flex;
+}
+.row{
+    float: left;
+}
+#column #btn
+{
+ margin-top: 80px;}
+.item-text {
+  padding: 30px !important;
+  /* Flex center. */
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  border: 1px solid blue !important;
+}
+
+       </style>
+    </head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    // Create the XHR object.
+  function createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+      // XHR for Chrome/Firefox/Opera/Safari.
+      xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+      // XDomainRequest for IE.
+      xhr = new XDomainRequest();
+      xhr.open(method, url);
+    } else {
+      // CORS not supported.
+      xhr = null;
+    }
+    return xhr;
+  }
+  
+  // Helper method to parse the title tag from the response.
+  function getTitle(text) {
+    return text.match('<title>(.*)?</title>')[1];
+  }
+  
+  // Make the actual CORS request.
+  function makeCorsRequest() {
+    // This is a sample server that supports CORS.
+    var url = 'http://192.168.0.1/mmc2/TTV/';
+  
+    var xhr = createCORSRequest('GET', url);
+    if (!xhr) {
+      alert('CORS not supported');
+      return;
+    }
+  
+    // Response handlers.
+    xhr.onload = function() {
+      var text = xhr.responseText;
+      var title = getTitle(text);
+      alert('Response from CORS request to ' + url + ': ' + title);
+    };
+  
+    xhr.onerror = function() {
+      alert('Woops, there was an error making the request.');
+    };
+  
+    xhr.send();
+  }
+  </script>
+    <body>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">Channels</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                      <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="index.html">Home</a>
+                            <a class="nav-item nav-link" href="lifestyle.html">Lifestyle</a>
+                        <a class="nav-item nav-link"href="Music.html">Music <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link"  href="Sport.html">Sports</a>
+                        <a class="nav-item nav-link" href="Spiritual.html">Spiritual</a>
+                        <a class="nav-item nav-link" href="Inspiraton.html">Inspiration</a>
+                        <a class="nav-item nav-link" href="Business.html">Business</a>
+                        <a class="nav-item nav-link"href="Comedy.html">Comedy</a>
+                      </div>
+                    </div>
+                  </nav>
+
+                  <div class="container"> 
+                      <div class='row'>
+                                  <div class='column'>
+                                    <div class='blue-column'>
+                                            <div class=" row col-sm-4">
+                                                    <a href="Inspiraton.html" class="thumbnail" >
+                                                            <img src="5.png" alt="London" width="200px" height="250px"/>
+                                                          </a>
+                                                        </div>
+                                                        <button id="myBtn" onclick="myFunction()">Play</button>
+                                                        <button id="hide" onclick="hideFunction()">Hide </button>     
+                                                    </div>
+                                                    
+                                                    
+                                    </div>
+                                  
+                                  <div class='column'>
+                                    <div class='green-column'>
+                                    
+                                                    <video autoplay loop id="myVideo" width="340" height="360">
+                                                            <source src="https://player.vimeo.com/external/305289181.sd.mp4?s=a172ed9a74f5c88c83a605d2c1d88e449b1e3ba9&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
+                                                            <!-- <source src="http://192.168.0.1/mmc2/TTV/Music/Shotgun%20(Extended%20Music%20Video)%20-%20Season%203%20-%20STAR.mp4" type="video/mp4"> -->
+                                                            Your browser does not support HTML5 video.
+                                                          </video>
+                                    
+                                  </div>
+                                </div>
+                            </div>
+                              
+                      
+                              
+                              </div>
+                     
+
+                      
+
+<script>
+        var video = document.getElementById("myVideo");
+        var btn = document.getElementById("myBtn");
+        
+        function myFunction() {
+          if (video.paused) {
+            video.play();
+            btn.innerHTML = "Pause";
+          } else {
+            video.pause();
+            btn.innerHTML = "Play";
+          }
+        };
+        
+        /*
+        hide button
+        */
+        
+        function hideFunction(){
+          var t = document.getElementById("thumb");
+          if (t.style.display === "none") {
+            t.style.display = "block";
+          } else {
+            t.style.display = "none";
+          }
+        }
+        
+        </script>
+    </body>
+</html>
